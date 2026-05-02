@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EXCELLENT TUTORAT</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">ET</div>
+        <div>
+          <h1>EXCELLENT TUTORAT</h1>
+          <p>Connexion Google + rôles + calendrier intelligent + paiement avant programmation</p>
+        </div>
+      </div>
+      <button id="googleLoginBtn" class="btn primary">Connexion Google (démo)</button>
+    </header>
+
+    <nav class="nav">
+      <a href="#accueil">Accueil</a>
+      <a href="#services">Nos services</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#essai">Séance d'essai</a>
+      <a href="#connexion">Connexion</a>
+      <a href="#calendrier">Calendrier</a>
+      <a href="#paiement">Paiement</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <main>
+      <section id="accueil" class="card hero">
+        <h2>Un service de tutorat par des enseignants qualifiés</h2>
+        <p>Plateforme pensée pour les administrateurs, enseignants, élèves et parents avec des permissions claires.</p>
+        <ul>
+          <li>✅ Séances régulières uniquement après paiement</li>
+          <li>✅ Réservation d'une séance d'essai gratuite (30 min, une fois par élève)</li>
+          <li>✅ Synchronisation Google Calendar et liens Meet/Zoom automatiques</li>
+        </ul>
+      </section>
+
+      <section id="services" class="card">
+        <h2>Nos services</h2>
+        <div class="grid two">
+          <article>
+            <h3>Soutien individuel</h3>
+            <p>Mathématiques, français, anglais, sciences, préparation d'examens.</p>
+          </article>
+          <article>
+            <h3>Tutorat de groupe</h3>
+            <p>Groupes de 2 à 4 élèves avec objectifs communs et suivi personnalisé.</p>
+          </article>
+          <article>
+            <h3>Préparation examens</h3>
+            <p>Baccalauréat, IB, examens ministériels, méthodologie et simulation.</p>
+          </article>
+          <article>
+            <h3>Conseil pédagogique</h3>
+            <p>Suivi des objectifs, devoirs et communication entre enseignant et parent.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="tarifs" class="card">
+        <h2>Tarifs</h2>
+        <p>Basé sur vos visuels fournis.</p>
+        <div class="grid two">
+          <article>
+            <h3>Encadrement individuel</h3>
+            <ul>
+              <li>1ère à 8e année: <strong>45$/h</strong></li>
+              <li>Autres niveaux: <strong>50$/h</strong></li>
+              <li>Réduction 1: -5$ pour un enfant supplémentaire (même famille)</li>
+              <li>Réduction 2: -5$ pour une séance supplémentaire dans la même semaine</li>
+              <li>Réduction 3: -10$ pour élèves sponsorisés (hors réductions 1 et 2)</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Encadrement par équipe</h3>
+            <ul>
+              <li>2 à 4 élèves: <strong>30$/h par élève</strong></li>
+              <li>Réduction 3: -5$ pour élèves sponsorisés (hors réductions 1 et 2)</li>
+            </ul>
+          </article>
+        </div>
+
+        <h3>Forfaits disponibles</h3>
+        <div id="packages" class="chips"></div>
+      </section>
+
+      <section id="essai" class="card">
+        <h2>Réserver une séance d'essai gratuite</h2>
+        <form id="trialForm" class="stack">
+          <input required name="studentName" placeholder="Nom de l'élève" />
+          <input required name="subject" placeholder="Matière (ex: Mathématiques)" />
+          <input required type="date" name="date" />
+          <button class="btn">Réserver une séance d'essai gratuite</button>
+        </form>
+        <p class="small">Règles: 30 minutes, 1 seule séance d'essai par élève, validation administrateur.</p>
+      </section>
+
+      <section id="connexion" class="card">
+        <h2>Connexion et rôles</h2>
+        <p>Cette version inclut une démo de connexion Google simulée (OAuth réel prêt à brancher côté backend).</p>
+        <div class="stack">
+          <label>Choisir un rôle (démo)
+            <select id="roleSelect">
+              <option value="parent">Parent</option>
+              <option value="student">Élève</option>
+              <option value="teacher">Enseignant</option>
+              <option value="admin">Administrateur</option>
+            </select>
+          </label>
+          <button id="switchRoleBtn" class="btn">Activer ce rôle</button>
+        </div>
+      </section>
+
+      <section id="dashboard" class="card">
+        <h2>Tableau de bord</h2>
+        <div id="dashboardContent"></div>
+      </section>
+
+      <section id="calendrier" class="card">
+        <h2>Calendrier intelligent (permissions)</h2>
+        <ul id="calendarList"></ul>
+      </section>
+
+      <section id="paiement" class="card">
+        <h2>Paiement en ligne</h2>
+        <form id="paymentForm" class="stack">
+          <label>Parent
+            <input required name="parent" placeholder="Nom du parent" />
+          </label>
+          <label>Élève
+            <input required name="student" placeholder="Nom de l'élève" />
+          </label>
+          <label>Forfait
+            <select name="package" id="packageSelect"></select>
+          </label>
+          <label>Méthode
+            <select name="method">
+              <option>Stripe</option>
+              <option>PayPal</option>
+              <option>Interac</option>
+              <option>Carte crédit/débit</option>
+            </select>
+          </label>
+          <button class="btn primary">Payer et activer la programmation</button>
+        </form>
+        <p class="small">Règle métier appliquée: sans paiement, aucune séance régulière ne peut être confirmée.</p>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <p>info@excellenttutorat.ca · +1 438-228-1444 · +1 289-497-2345 · www.excellenttutorat.ca</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>L'excellence au service de la réussite.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
